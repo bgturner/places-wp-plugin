@@ -13,4 +13,5 @@
 
 require_once(__DIR__ . '/verify-google-maps-api.php');
 require_once(__DIR__ . '/post-types/place.php');
+require_once(__DIR__ . '/rest-endpoints/places.php');
 ?>
