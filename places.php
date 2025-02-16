@@ -11,4 +11,5 @@
  * @package         Places
  */
 
-// Your code starts here.
+require_once(__DIR__ . '/post-types/place.php');
+?>
