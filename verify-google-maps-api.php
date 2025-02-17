@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 if (!getenv('GOOGLE_MAPS_API_KEY') && file_exists(__DIR__ . '/.env')) {
 	$env = parse_ini_file('.env');
 	putenv("GOOGLE_MAPS_API_KEY=" . $env["GOOGLE_MAPS_API_KEY"]);
