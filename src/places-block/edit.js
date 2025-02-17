@@ -11,7 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { ComboboxControl, PanelBody } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,8 +32,26 @@ import './editor.scss';
  */
 export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Places – hello from the editor!', 'places' ) }
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody>
+					<ComboboxControl
+						label="Select Places to display"
+						onChange={() => console.log('Changed places...')}
+						onFilterValueChange={() => console.log('Filter value changed...')}
+						value={null}
+						options={[
+							{ label: '1', value: 'Place Title 1' },
+							{ label: '2', value: 'Place Title 2' },
+							{ label: '3', value: 'Place Title 3' },
+							{ label: '4', value: 'Place Title 4' },
+						]}
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<p { ...useBlockProps() }>
+				{ __( 'Places – hello from the editor!', 'places' ) }
+			</p>
+		</>
 	);
 }
