@@ -14,6 +14,7 @@ import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { ComboboxControl, PanelBody } from '@wordpress/components';
 import { useEntityRecords } from '@wordpress/core-data';
+import { useState } from 'react';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -33,25 +34,30 @@ import { PlacesList } from './PlacesList';
  * @return {Element} Element to render.
  */
 export default function Edit() {
-
+	const [ place, setPlace ] = useState('');
 	const data = useEntityRecords( 'postType', 'place' );
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody>
-					<ComboboxControl
-						label="Select Places to display"
-						onChange={() => console.log('Changed places...')}
-						onFilterValueChange={() => console.log('Filter value changed...')}
-						value={null}
-						options={[
-							{ label: '1', value: 'Place Title 1' },
-							{ label: '2', value: 'Place Title 2' },
-							{ label: '3', value: 'Place Title 3' },
-							{ label: '4', value: 'Place Title 4' },
-						]}
-					/>
+					{data.hasResolved &&
+						<ComboboxControl
+							label="Select a place to display"
+							onChange={(placeId) => {
+								console.log('placeId: ', placeId);
+								setPlace(placeId);
+							}}
+							onFilterValueChange={() => console.log('Filter value changed...')}
+							value={place}
+							options={data.records.map(place => {
+								return {
+									label: place.title.rendered,
+									value: place.id
+								}
+							})}
+						/>
+					}
 				</PanelBody>
 			</InspectorControls>
 			<div { ...useBlockProps() }>
