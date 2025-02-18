@@ -7,6 +7,11 @@
 	"category": "design",
 	"icon": "location",
 	"description": "Display a collection of places on a map.",
+	"attributes": {
+		"place": {
+			"type": "string"
+		}
+	},
 	"example": {},
 	"supports": {
 		"html": false

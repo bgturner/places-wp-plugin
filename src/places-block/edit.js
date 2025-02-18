@@ -14,7 +14,6 @@ import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { ComboboxControl, PanelBody } from '@wordpress/components';
 import { useEntityRecords } from '@wordpress/core-data';
-import { useState } from 'react';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -33,8 +32,8 @@ import { PlacesList } from './PlacesList';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
-	const [ place, setPlace ] = useState('');
+export default function Edit({ attributes, setAttributes }) {
+	const { place } = attributes;
 	const data = useEntityRecords( 'postType', 'place' );
 
 	return (
@@ -47,10 +46,10 @@ export default function Edit() {
 							label="Select a place to display"
 							onChange={(placeId) => {
 								console.log('placeId: ', placeId);
-								setPlace(placeId);
+								setAttributes({ place: placeId });
 							}}
 							onFilterValueChange={() => console.log('Filter value changed...')}
-							value={place}
+							value={place || ''}
 							options={data.records.map(place => {
 								return {
 									label: place.title.rendered,
