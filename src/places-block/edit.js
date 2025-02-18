@@ -13,6 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { ComboboxControl, PanelBody } from '@wordpress/components';
+import { useEntityRecords } from '@wordpress/core-data';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -21,6 +22,7 @@ import { ComboboxControl, PanelBody } from '@wordpress/components';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+import { PlacesList } from './PlacesList';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,6 +33,9 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit() {
+
+	const data = useEntityRecords( 'postType', 'place' );
+
 	return (
 		<>
 			<InspectorControls>
@@ -49,9 +54,13 @@ export default function Edit() {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<p { ...useBlockProps() }>
-				{ __( 'Places – hello from the editor!', 'places' ) }
-			</p>
+			<div { ...useBlockProps() }>
+				{data.hasResolved
+					&& <div>
+						   <PlacesList places={data.records} />
+					   </div>
+				}
+			</div>
 		</>
 	);
 }
