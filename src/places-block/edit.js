@@ -43,6 +43,7 @@ export default function Edit() {
 				<PanelBody>
 					{data.hasResolved &&
 						<ComboboxControl
+							__nextHasNoMarginBottom
 							label="Select a place to display"
 							onChange={(placeId) => {
 								console.log('placeId: ', placeId);
