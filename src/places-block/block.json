@@ -9,7 +9,7 @@
 	"description": "Display a collection of places on a map.",
 	"attributes": {
 		"place": {
-			"type": "string"
+			"type": "integer"
 		}
 	},
 	"example": {},
