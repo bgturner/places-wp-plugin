@@ -4,11 +4,7 @@ export const SinglePlace = ({ place }) => {
 	}
 	return (
 		<div className="single-place">
-			<p className="place-title">
-				<span className="place-id">{place.id}</span>
-				&nbsp;
-				<span class="title">{place.title.rendered}</span>
-			</p>
+			<p className="place-title">{place.title.rendered}</p>
 			<p className="place-excerpt">{place.excerpt.raw}</p>
 		</div>
 	);
