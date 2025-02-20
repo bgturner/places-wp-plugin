@@ -20,5 +20,13 @@
 	"dependencies": {
 		"@wordpress/components": "^29.4.0",
 		"@wordpress/core-data": "^7.18.0"
-	}
+	},
+  "files": [
+    "build",
+    "post-types",
+    "rest-endpoints",
+    "verify-google-maps-api.php",
+    "readme.md",
+    "places.php"
+  ]
 }
