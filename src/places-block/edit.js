@@ -55,10 +55,8 @@ export default function Edit({ attributes, setAttributes }) {
 							__nextHasNoMarginBottom
 							label="Select a place to display"
 							onChange={(placeId) => {
-								console.log('placeId: ', placeId);
 								setAttributes({ placeId });
 							}}
-							onFilterValueChange={() => console.log('Filter value changed...')}
 							value={placeId || ''}
 							options={data.records.map(place => {
 								return {
