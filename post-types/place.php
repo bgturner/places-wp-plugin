@@ -123,3 +123,54 @@ function place_bulk_updated_messages( $bulk_messages, $bulk_counts ) {
 }
 
 add_filter( 'bulk_post_updated_messages', 'place_bulk_updated_messages', 10, 2 );
+
+add_action( 'acf/include_fields', function() {
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	acf_add_local_field_group( array(
+		'key' => 'group_67b262127e1ea',
+		'title' => 'Places',
+		'fields' => array(
+			array(
+				'key' => 'field_67b2621295c99',
+				'label' => 'location',
+				'name' => 'location',
+				'aria-label' => '',
+				'type' => 'google_map',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'center_lat' => '',
+				'center_lng' => '',
+				'zoom' => '',
+				'height' => '',
+				'allow_in_bindings' => 0,
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'place',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+		'show_in_rest' => 1,
+	) );
+} );
