@@ -14,7 +14,14 @@
 	},
 	"example": {},
 	"supports": {
-		"html": false
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"html": false,
+		"typography": {
+			"fontSize": true
+		}
 	},
 	"textdomain": "places",
 	"editorScript": "file:./index.js",
