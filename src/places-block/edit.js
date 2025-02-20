@@ -33,7 +33,7 @@ import { PlacesList } from './PlacesList';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { place } = attributes;
+	const { placeId } = attributes;
 	const data = useEntityRecords( 'postType', 'place' );
 
 	return (
@@ -46,10 +46,10 @@ export default function Edit({ attributes, setAttributes }) {
 							label="Select a place to display"
 							onChange={(placeId) => {
 								console.log('placeId: ', placeId);
-								setAttributes({ place: placeId });
+								setAttributes({ placeId });
 							}}
 							onFilterValueChange={() => console.log('Filter value changed...')}
-							value={place || ''}
+							value={placeId || ''}
 							options={data.records.map(place => {
 								return {
 									label: place.title.rendered,

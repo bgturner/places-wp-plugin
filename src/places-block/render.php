@@ -2,8 +2,8 @@
 /**
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
-if (! empty($attributes['place']) && is_numeric($attributes['place'])) {
-	$place_id = $attributes['place'];
+if (! empty($attributes['placeId']) && is_numeric($attributes['placeId'])) {
+	$place_id = $attributes['placeId'];
 	$place = get_post($place_id);
 	if (function_exists('get_field')) {
 		$place_field = get_field('location', $place_id);
