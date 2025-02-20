@@ -21,3 +21,12 @@ To compile the block assets, install `npm` dependencies and run the `start` scri
 npm install
 npm run start
 ```
+
+## Release
+
+To create a zip archive for this plugin, build the block assets and generate the script using npm scripts:
+
+```shell
+npm run build
+npm run plugin-zip
+```
