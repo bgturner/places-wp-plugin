@@ -11,10 +11,10 @@ if (! empty($attributes['placeId']) && is_numeric($attributes['placeId'])) {
 	?>
 	<div <?php echo get_block_wrapper_attributes(); ?>>
 		<?php if (! empty($place) ) : ?>
-			<h2><?php esc_html_e($place->post_title); ?></h2>
-			<p><?php esc_html_e($place->post_excerpt); ?></p>
+			<p class="place-title"><?php esc_html_e($place->post_title); ?></p>
+			<p class="place-excerpt"><?php esc_html_e($place->post_excerpt); ?></p>
 			<?php if (! empty($place_field)) : ?>
-				<p><?php esc_html_e($place_field['address']); ?></p>
+				<p class="place-address"><?php esc_html_e($place_field['address']); ?></p>
 			<?php endif; ?>
 		<?php endif; ?>
 	</div>

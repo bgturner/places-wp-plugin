@@ -8,5 +8,19 @@
 .wp-block-places-block-places {
 	background-color: #21759b;
 	color: #fff;
-	padding: 2px;
+	padding: 1em 2em;
+}
+
+.wp-block-places-block-places .place-title {
+	font-size: 1.125em;
+	margin-bottom: 0;
+}
+
+.wp-block-places-block-places .place-excerpt {
+	font-style: italic;
+	margin-top: 0;
+}
+
+.wp-block-places-block-places .place-address {
+	font-size: 0.675em;
 }
