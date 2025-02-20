@@ -14,6 +14,7 @@ import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { ComboboxControl, PanelBody } from '@wordpress/components';
 import { useEntityRecords } from '@wordpress/core-data';
+import { useEffect, useState } from 'react'
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -22,7 +23,7 @@ import { useEntityRecords } from '@wordpress/core-data';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import { PlacesList } from './PlacesList';
+import { SinglePlace } from './SinglePlace';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -35,6 +36,15 @@ import { PlacesList } from './PlacesList';
 export default function Edit({ attributes, setAttributes }) {
 	const { placeId } = attributes;
 	const data = useEntityRecords( 'postType', 'place' );
+
+	const [ selectedPlace, setSelectedPlace ] = useState(false);
+
+	useEffect(() => {
+		if (data.hasResolved && placeId) {
+			const selectedPlace = data.records.find(p => p.id === placeId);
+			setSelectedPlace(selectedPlace);
+		}
+	}, [data.hasResolved, placeId]);
 
 	return (
 		<>
@@ -61,11 +71,7 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<div { ...useBlockProps() }>
-				{data.hasResolved
-					&& <div>
-						   <PlacesList places={data.records} />
-					   </div>
-				}
+				{ selectedPlace ? <SinglePlace place={ selectedPlace } /> : null }
 			</div>
 		</>
 	);
